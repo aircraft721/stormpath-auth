@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('protected',['middleware'=>['stormpath.auth'],function(){
+    return 'These are all the secrets!';
+}]);
+
+Route::get('guests',['middleware'=>['stormpath.guest'],function(){
+    return 'You are a Guest!';
+}]);
